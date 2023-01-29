@@ -1,12 +1,16 @@
-<form action="" method="post">
-    <h2>New Transaction</h2>
-    <div>
-        <label for="amount">Amount</label>
-        <input id="amount" type="text">
+<section class="container">
+  <form class="form" (ngSubmit)="makeTransaction()">
+    <h2 class="form__title">New Transaction</h2>
+    <div class="form-field">
+        <label class="form-field__label" for="amount">Amount</label>
+        <input class="form-field__input" id="amount" name="amount" type="text" [(ngModel)]="amount">
     </div>
-    <div>
-        <label for="destiny">Destiny Account</label>
-        <input id="destiny" type="text">
+    <div class="form-field">
+        <label class="form-field__label" for="destination">Destination Account (6 numbers)</label>
+        <input class="form-field__input" id="destination" name="destination" type="text" [(ngModel)]="destination">
     </div>
-    <button type="submit">Confirm</button>
-</form>
+    <div class="button-wrapper">
+      <button class="button" type="submit">Confirm</button>
+    </div>
+  </form>
+</section>

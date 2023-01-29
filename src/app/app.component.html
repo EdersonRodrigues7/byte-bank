@@ -1,1 +1,3 @@
-<app-transaction-form></app-transaction-form>
+<app-transaction-form (onTransact)="transact($event)"></app-transaction-form>
+
+<p>{{transaction?.amount}}</p>

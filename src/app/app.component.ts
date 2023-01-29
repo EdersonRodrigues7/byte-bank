@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'byte-bank';
+  transaction: any;
+
+  transact($event){
+    this.transaction = {amount: $event.amount, destination: $event.destination}
+  }
 }
