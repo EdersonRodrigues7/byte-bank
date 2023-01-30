@@ -1,0 +1,17 @@
+<div>
+  <h2 class="title">Extract</h2>
+  <table>
+    <thead>
+      <th>Date</th>
+      <th>Amount ($)</th>
+      <th>Destination</th>
+    </thead>
+    <tbody *ngFor="let transaction of transactions">
+      <tr>
+        <td>{{transaction?.date | date: "shortDate"}}</td>
+        <td>{{transaction?.amount | currency}}</td>
+        <td>{{transaction?.destination}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

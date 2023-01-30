@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'byte-bank';
-  transaction: any;
+  transactions: Object[] = [];
 
   transact($event){
-    this.transaction = {amount: $event.amount, destination: $event.destination}
+    const transaction = {...$event, date: new Date()};
+    this.transactions.push(transaction);
   }
 }
