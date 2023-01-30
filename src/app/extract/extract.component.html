@@ -1,17 +1,20 @@
 <div>
   <h2 class="title">Extract</h2>
-  <table>
-    <thead>
-      <th>Date</th>
-      <th>Amount ($)</th>
-      <th>Destination</th>
+  <table class="table">
+    <thead class="table__header">
+      <th class="table__header__content">Date</th>
+      <th class="table__header__content">Amount ($)</th>
+      <th class="table__header__content">Destination</th>
     </thead>
-    <tbody *ngFor="let transaction of transactions">
-      <tr>
-        <td>{{transaction?.date | date: "shortDate"}}</td>
-        <td>{{transaction?.amount | currency}}</td>
-        <td>{{transaction?.destination}}</td>
+    <tbody *ngIf="transactions.length > 0; else emptyList">
+      <tr class="table__line" *ngFor="let transaction of transactions">
+        <td class="table__content">{{transaction?.date | date: "shortDate"}}</td>
+        <td class="table__content">{{transaction?.amount | currency}}</td>
+        <td class="table__content">{{transaction?.destination}}</td>
       </tr>
     </tbody>
   </table>
 </div>
+<ng-template #emptyList>
+  <p>There are no transactions here yet 🤔</p>
+</ng-template>
