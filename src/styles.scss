@@ -2,11 +2,14 @@
   --primary: #369c38;
   --secondary: #132A13;
   --padding: 15px;
-  --cinza : #405040;
-  --cinza-claro: #dedede;
+  --gray-primary : #405040;
+  --gray-light: #dedede;
 }
 
 * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: "Roboto", sans-serif;
 }
 
