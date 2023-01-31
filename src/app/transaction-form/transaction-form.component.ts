@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Transaction } from '../models/transaction.model';
+import { TransactionService } from '../services/transaction.service';
 
 @Component({
   selector: 'app-transaction-form',
@@ -9,13 +11,21 @@ export class TransactionFormComponent {
   @Output () onTransact = new EventEmitter<Object>();
   amount: number;
   destination: string;
-  transaction: Object;
+  transaction: Transaction;
+
+  constructor(private service: TransactionService){}
 
   makeTransaction(){
     if(this.validate(this.amount, this.destination)){
       this.transaction = {amount: this.amount, destination: this.destination};
-      this.onTransact.emit(this.transaction);
-      this.clearForm();
+      this.service.setNewTransaction(this.transaction).subscribe({
+        next: (transaction: Transaction) => {
+          console.log(`Transaction successfully created! Amount: ${transaction.amount}`);
+          this.clearForm();
+        },
+        error: (err: any) => console.log(err),
+        complete: () => console.log(`Transaction successfully created!`)
+      });
     } else {
       alert("Please provide valid amount and destination");
     }

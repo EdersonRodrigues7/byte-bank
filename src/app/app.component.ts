@@ -10,8 +10,4 @@ export class AppComponent {
   title = 'byte-bank';
 
   constructor(private service: TransactionService){}
-
-  transact($event){
-    this.service.transact($event);
-  }
 }
