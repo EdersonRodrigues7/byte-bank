@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction.model';
 import { TransactionService } from '../services/transaction.service';
 
@@ -13,7 +14,7 @@ export class TransactionFormComponent {
   destination: string;
   transaction: Transaction;
 
-  constructor(private service: TransactionService){}
+  constructor(private service: TransactionService, private router: Router){}
 
   makeTransaction(){
     if(this.validate(this.amount, this.destination)){
@@ -22,6 +23,7 @@ export class TransactionFormComponent {
         next: (transaction: Transaction) => {
           console.log(`Transaction successfully created! Amount: ${transaction.amount}`);
           this.clearForm();
+          this.router.navigateByUrl('extract');
         },
         error: (err: any) => console.log(err),
         complete: () => console.log(`Transaction successfully created!`)
